@@ -3,7 +3,7 @@
   window.ChatWidgetInjected = true;
 
   const config = window.ChatWidgetConfig || {};
-  const avatarUrl = config.avatar || 'https://yourcdn.com/bot.png';
+  const avatarUrl = config.avatar || './bot_face.png';
   const socketUrl = config.socket || `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws/chat`;
 
   const style = document.createElement('style');
@@ -439,7 +439,7 @@
             <div id="chat-window">
                 <div id="chat-header">
                     <div class="header-info">
-                        <img class="assistant-avatar-img" src="/static/bot_face.png" alt="A">
+                        <img class="assistant-avatar-img" src="${avatarUrl}" alt="A">
                         <div class="header-text">
                             <h3>Anna <span id="status-dot" class="status-dot"></span></h3>
                             <div class="assistant-name">AI Assistant</div>
@@ -551,7 +551,7 @@
                 this.updateConnectionStatus('connecting', 'Connecting...');
                 
                 const proto = location.protocol === 'https:' ? 'wss' : 'ws';
-                this.socket = new WebSocket(`${proto}://${location.host}/ws/chat`);
+                this.socket = new WebSocket(socketUrl);
 
                 this.socket.onopen = () => {
                     this.updateConnectionStatus('connected', 'Online');
@@ -804,10 +804,8 @@
                 }
             }
         }
-
         new ChatWidget();
     }
   };
-
   document.head.appendChild(script);
 })();

@@ -3,7 +3,7 @@
   window.ChatWidgetInjected = true;
 
   const config = window.ChatWidgetConfig || {};
-  const avatarUrl = config.avatar || './bot_face.png';
+  const avatarUrl = config.avatar || 'https://arseniimd.github.io/chat-widget/bot_face.png';
   const socketUrl = config.socket || `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws/chat`;
 
   const style = document.createElement('style');

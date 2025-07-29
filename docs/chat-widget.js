@@ -602,12 +602,12 @@
                     this.hasHistory = true;
                 }
 
-                if (!this.autoOpenScheduled) {
-                    const delay = this.hasHistory ? 15000 : 15000;
-                    this.autoOpenScheduled = true;
-                    this.autoOpenTimer = setTimeout(() => {
-                        if (!this.isOpen) this.openChat(); 
-                    }, delay);
+                if (!this.autoOpenScheduled && window.innerWidth > 768) {
+                  const delay = this.hasHistory ? 15000 : 15000;
+                  this.autoOpenScheduled = true;
+                  this.autoOpenTimer = setTimeout(() => {
+                      if (!this.isOpen) this.openChat(); 
+                  }, delay);
                 }
 
                 switch (data.type) {
